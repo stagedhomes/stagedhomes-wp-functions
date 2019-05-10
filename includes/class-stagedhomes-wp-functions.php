@@ -78,7 +78,7 @@ class Stagedhomes_Wp_Functions {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
+    $this->add_shortcodes();
 	}
 
 	/**
@@ -174,6 +174,15 @@ class Stagedhomes_Wp_Functions {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
 	}
+  
+  /**
+   * Add a new shortcode to the collection to be registered with WordPress.
+   */
+  private function add_shortcodes() {
+    // Grant Program
+    include_once(plugin_dir_path( __FILE__ ) . "/grant-program/class-grant.php");
+    add_shortcode("grantprogram", array("Shc_Functions_GrantProgram", "html_form_code"));
+  } // add_shortcode()
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
