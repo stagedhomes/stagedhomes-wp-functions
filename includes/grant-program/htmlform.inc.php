@@ -3,7 +3,7 @@
 
   $a = shortcode_atts( array(
     "subject" => "Grant Program Registration",
-    "googlesheet" => "United States",
+    "googlesheet" => "All Leads",
     "buttontext" => "Submit",
   ), $atts );
 ?>
@@ -20,7 +20,7 @@
   <!-- Hidden: Subject of Email or Slack -->
   <input type="hidden" name="strSubject" value="<?php echo $a['subject']; ?>" />
   
-  <!-- Hidden: Country -->
+  <!-- Hidden: Google Sheet -->
   <input type="hidden" name="strGoogleSheet" value="<?php echo $a['googlesheet']; ?>" />
 
   <!-- Email Address -->
