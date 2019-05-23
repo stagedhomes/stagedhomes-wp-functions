@@ -4,13 +4,14 @@
   $a = shortcode_atts( array(
     "subject" => "Grant Program Registration",
     "googlesheet" => "All Leads",
+    "urlforward" => "https://stagedhomes.com/training/all-classes.php",
     "buttontext" => "Submit",
   ), $atts );
 ?>
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
-<form id="registration" action="https://stagedhomes.com/training/all-classes.php" method="post">
+<form id="registration" action="<?php echo $a["urlforward"]; ?>" method="post">
   <!-- First and Last Name -->
   <div class="form-group">
     <label for="strFullName"><strong>First and Last Name</strong></label>
