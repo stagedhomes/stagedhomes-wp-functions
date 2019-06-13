@@ -1,28 +1,36 @@
 <?php
-  $myRequestURI = "https://stagedhomes.com/training/all-classes.php";
+  // Prep URL
+  $myRequestURI;
 
+  // Create WP shortcode.
   $a = shortcode_atts( array(
     "subject" => "Grant Program Registration",
     "googlesheet" => "All Leads",
     "urlforward" => "https://stagedhomes.com/training/all-classes.php",
     "buttontext" => "Submit",
   ), $atts );
+
+  // Construct urlforward
+  if ($a["urlforward"] !== "https://stagedhomes.com/training/all-classes.php") {
+    $myRequestURI = "https://stagedhomes.com/assets/app_modules/wordpress/shortcode-redirect.php";
+  } else {
+    $myRequestURI = "https://stagedhomes.com/training/all-classes.php";
+  } // if
 ?>
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
 
-<form id="registration" action="<?php echo $a["urlforward"]; ?>" method="post">
+<form id="registration" action="<?php echo $myRequestURI; ?>" method="post">
   <!-- First and Last Name -->
   <div class="form-group">
     <label for="strFullName"><strong>First and Last Name</strong></label>
     <input type="text" name="strFullName" class="form-control" placeholder="Enter First and Last Name" required />
   </div>
 
-  <!-- Hidden: Subject of Email or Slack -->
+  <!-- Data for receiving end. -->
   <input type="hidden" name="strSubject" value="<?php echo $a['subject']; ?>" />
-  
-  <!-- Hidden: Google Sheet -->
   <input type="hidden" name="strGoogleSheet" value="<?php echo $a['googlesheet']; ?>" />
+  <input type="hidden" name="strUrlForward" value="<?php echo $a['urlforward']; ?>" />
 
   <!-- Email Address -->
   <div class="form-group">
