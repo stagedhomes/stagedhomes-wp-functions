@@ -9,6 +9,10 @@
     "urlforward" => "https://stagedhomes.com/training/all-classes.php",
     "sendgrantemail" => "no",
     "buttontext" => "Submit",
+    
+    // Optional attributes.
+    "country" => "no",
+    "optionsselection" => "no"
   ), $atts );
 
   // Construct urlforward
@@ -33,6 +37,7 @@
   <input type="hidden" name="strGoogleSheet" value="<?php echo $a['googlesheet']; ?>" />
   <input type="hidden" name="strUrlForward" value="<?php echo $a['urlforward']; ?>" />
   <input type="hidden" name="strSendGrantEmail" value="<?php echo $a['sendgrantemail']; ?>" />
+  <input type="hidden" name="strCountry" value="<?php echo $a['country']; ?>" />
 
   <!-- Email Address -->
   <div class="form-group">
@@ -57,6 +62,22 @@
     <label for="strState"><strong>Your State</strong></label>
     <input type="text" name="strState" class="form-control" placeholder="Enter State" required />
   </div>
+  
+  <!-- North America Live Courses Course Type -->
+  <?php if ($a['optionsselection'] !== "no") { ?>
+    <div class="form-group">
+      <label for="strOptionsSelection"><strong>Select Course (select one):</strong></label>
+      <select class="form-control" name="strOptionsSelection">
+        <?php
+          foreach (explode(",", $a["optionsselection"]) as $value) {
+            echo "<option>" . $value . "</option>";
+          } // foreach
+        ?>
+      </select>
+    </div>
+  <?php } else { ?>
+    <input type="hidden" name="strOptionsSelection" value="no" />
+  <?php } ?>
 
   <!-- CAPTCHA -->
   <div class="text-center" >
