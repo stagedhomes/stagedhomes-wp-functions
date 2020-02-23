@@ -7,7 +7,7 @@
     "subject" => "Grant Program Registration",
     "googlesheet" => "All Leads",
     "urlforward" => "https://stagedhomes.com/training/all-classes.php",
-    "isSendEmail" => 0,
+    "sendgrantemail" => "no",
     "buttontext" => "Submit",
   ), $atts );
 
@@ -32,7 +32,7 @@
   <input type="hidden" name="strSubject" value="<?php echo $a['subject']; ?>" />
   <input type="hidden" name="strGoogleSheet" value="<?php echo $a['googlesheet']; ?>" />
   <input type="hidden" name="strUrlForward" value="<?php echo $a['urlforward']; ?>" />
-  <input type="hidden" name="isSendEmail" value="<?php echo $a['isSendEmail']; ?>" />
+  <input type="hidden" name="strSendGrantEmail" value="<?php echo $a['sendgrantemail']; ?>" />
 
   <!-- Email Address -->
   <div class="form-group">
